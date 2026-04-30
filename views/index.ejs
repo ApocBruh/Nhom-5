@@ -1,162 +1,96 @@
-<!-- ============================================================ -->
-<!-- FILE: views/index.ejs -->
-<!-- MỤC ĐÍCH: Main view/layout của trang chủ website -->
-<!-- MÔ TẢ: File này là template chính chứa: -->
-<!-- 1. HTML5 DOCTYPE và head (nhúng partials/head.ejs) -->
-<!-- 2. Header/Navigation (nhúng partials/header.ejs) -->
-<!-- 3. Main News Slider - Carousel bài viết featured -->
-<!-- 4. Breaking News - Ticker tin mới -->
-<!-- 5. Featured News - Slider tin nổi bật -->
-<!-- 6. News With Sidebar - Bài viết chính + sidebar phụ -->
-<!-- 7. Footer (nhúng partials/footer.ejs) -->
-<!-- 8. Script tag để load jQuery, Bootstrap, Owl Carousel, v.v. -->
-<!-- ============================================================ -->
-
 <!DOCTYPE html>
 <html lang="en">
-    <!-- PHẦN 1: HTML HEAD -->
-    <!-- head: Chứa metadata, stylesheets, title, favicon, v.v. -->
-    <!-- <%- include(...) %>: EJS command để nhúng file partial -->
-    <!-- '../partials/head': Đường dẫn tương đối từ views/ tới partials/head.ejs -->
-    <!-- { title: title }: Truyền biến title từ route (app.js) vào partial -->
 <head>
     <%- include('../partials/head', { title: title }) %>
 </head>
 
 <body>
-    <!-- PHẦN 2: HEADER & NAVIGATION -->
-    <!-- Nhúng header.ejs (topbar + navbar) -->
-    <!-- Truyền siteInfo (Facebook, YouTube, address, email) từ route vào header -->
     <%- include('../partials/header', { siteInfo: siteInfo }) %>
 
-    <!-- ============================================================ -->
-    <!-- PHẦN 3: MAIN NEWS SLIDER - Carousel tin bài nổi bật -->
-    <!-- ============================================================ -->
-    <!-- Tạo slider sử dụng Owl Carousel library (2.2.1) -->
-    <!-- owl-carousel: Class để khởi tạo carousel (config ở main.js) -->
-    <!-- main-carousel: Custom class để identify carousel này -->
-    <!-- position-relative: Dùng để positioning overlay text trên hình -->
-<div class="container-fluid">
-        <!-- row: Tạo grid layout 12 cột -->
+    <!-- MAIN NEWS SLIDER -->
+    <div class="container-fluid">
         <div class="row">
-            <!-- CỘT 1: Slider lớn (7 cột) -->
-            <!-- col-lg-7: 7/12 chiều rộng trên desktop (58%) -->
-            <!-- px-0: Padding-left/right = 0 (loại bỏ padding mặc định) -->
             <div class="col-lg-7 px-0">
-                <!-- OWL CAROUSEL: Slider container -->
                 <div class="owl-carousel main-carousel position-relative">
-                    <!-- SLIDE 1: Bài viết chính -->
-                    <!-- position-relative: Cho phép positioning con của nó (overlay) -->
-                    <!-- overflow-hidden: Ẩn nội dung vượt ra ngoài (để handle object-fit) -->
-                    <!-- height: 500px: Chiều cao cố định cho slide -->
                     <div class="position-relative overflow-hidden" style="height: 500px;">
-                        <!-- Hình ảnh background -->
-                        <!-- img-fluid: Bootstrap class để ảnh responsive -->
-                        <!-- h-100: Height 100% (kế thừa chiều cao từ parent) -->
-                        <!-- object-fit: cover: CSS để cover toàn bộ area không bị stretch -->
                         <img class="img-fluid h-100" src="/img/news-800x500-1.jpg" style="object-fit: cover;">
-
-                        <!-- OVERLAY: Text trên hình ảnh -->
-                        <!-- overlay: Custom class để style text, nền mờ, v.v. -->
                         <div class="overlay">
-                            <!-- CATEGORY BADGE + DATE -->
                             <div class="mb-2">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">Business</a>
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                                 <a class="text-white" href="">Jan 01, 2045</a>
                             </div>
-                            <!-- TIÊU ĐỀ BÀI VIẾT -->
-                            <!-- h2: Heading level 2 (lớn) -->
-                            <!-- m-0: Margin 0 (loại bỏ margin mặc định) -->
-                            <!-- text-white: Chữ màu trắng (nổi bật trên ảnh tối) -->
-                            <!-- text-uppercase: Chữ hoa toàn bộ -->
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit</a>
                         </div>
                     </div>
-
-                    <!-- SLIDE 2 & 3: Tương tự slide 1 (bài viết khác) -->
                     <div class="position-relative overflow-hidden" style="height: 500px;">
                         <img class="img-fluid h-100" src="/img/news-800x500-2.jpg" style="object-fit: cover;">
                         <div class="overlay">
                             <div class="mb-2">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">Business</a>
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                                 <a class="text-white" href="">Jan 01, 2045</a>
                             </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit</a>
                         </div>
                     </div>
                     <div class="position-relative overflow-hidden" style="height: 500px;">
                         <img class="img-fluid h-100" src="/img/news-800x500-3.jpg" style="object-fit: cover;">
                         <div class="overlay">
                             <div class="mb-2">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">Business</a>
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                                 <a class="text-white" href="">Jan 01, 2045</a>
                             </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- CỘT 2: 4 bài viết nhỏ (5 cột) -->
-            <!-- col-lg-5: 5/12 chiều rộng trên desktop (42%) -->
-            <!-- px-0: Không padding ngang -->
             <div class="col-lg-5 px-0">
-                <!-- row: Grid 12 cột cho 4 bài viết nhỏ -->
-                <!-- mx-0: Margin-left/right = 0 (loại bỏ margin mặc định của row) -->
                 <div class="row mx-0">
-                    <!-- BÀI VIẾT NHỎ 1 & 2: Hàng đầu tiên (2 cột, mỗi cái 6/12 chiều rộng) -->
                     <div class="col-md-6 px-0">
                         <div class="position-relative overflow-hidden" style="height: 250px;">
-                            <img class="img-fluid w-100 h-100" src="/img/news-700x435-1.jpg" style="object-fit: cover;">
+                            <img class="img-fluid h-100" src="/img/news-500x500-1.jpg" style="object-fit: cover;">
                             <div class="overlay">
                                 <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                        href="">Business</a>
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                                     <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                                 </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 px-0">
                         <div class="position-relative overflow-hidden" style="height: 250px;">
-                            <img class="img-fluid w-100 h-100" src="/img/news-700x435-2.jpg" style="object-fit: cover;">
+                            <img class="img-fluid h-100" src="/img/news-500x500-2.jpg" style="object-fit: cover;">
                             <div class="overlay">
                                 <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                        href="">Business</a>
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                                     <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                                 </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 px-0">
                         <div class="position-relative overflow-hidden" style="height: 250px;">
-                            <img class="img-fluid w-100 h-100" src="/img/news-700x435-3.jpg" style="object-fit: cover;">
+                            <img class="img-fluid h-100" src="/img/news-500x500-3.jpg" style="object-fit: cover;">
                             <div class="overlay">
                                 <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                        href="">Business</a>
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                                     <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                                 </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 px-0">
                         <div class="position-relative overflow-hidden" style="height: 250px;">
-                            <img class="img-fluid w-100 h-100" src="/img/news-700x435-4.jpg" style="object-fit: cover;">
+                            <img class="img-fluid h-100" src="/img/news-500x500-4.jpg" style="object-fit: cover;">
                             <div class="overlay">
                                 <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                        href="">Business</a>
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                                     <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                                 </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor</a>
                             </div>
                         </div>
                     </div>
@@ -164,260 +98,150 @@
             </div>
         </div>
     </div>
-    <!-- Main News Slider End -->
 
-
-    <!-- ============================================================ -->
-    <!-- PHẦN 4: BREAKING NEWS - Ticker tin mới (scrolling news) -->
-    <!-- ============================================================ -->
-    <!-- bg-dark: Nền màu tối -->
-    <!-- py-3: Padding-top & bottom = 3 (khoảng cách dọc) -->
-    <!-- mb-3: Margin-bottom = 3 (khoảng cách từ phần dưới) -->
-    <div class="container-fluid bg-dark py-3 mb-3">
+    <!-- BREAKING NEWS -->
+    <div class="container-fluid bg-dark py-3">
         <div class="container">
-            <!-- row: Grid layout 12 cột -->
-            <!-- align-items-center: Căn giữa content theo chiều dọc -->
-            <div class="row align-items-center bg-dark">
-                <!-- Chiếm toàn bộ chiều rộng -->
+            <div class="row align-items-center">
                 <div class="col-12">
-                    <!-- d-flex: Flexbox layout -->
-                    <!-- justify-content-between: Khoảng cách giữa "Breaking News" label và news ticker -->
-                    <div class="d-flex justify-content-between">
-                        <!-- LABEL "BREAKING NEWS" -->
-                        <!-- bg-primary: Nền màu primary (xanh) -->
-                        <!-- text-dark: Chữ màu tối (nổi bật trên nền xanh) -->
-                        <!-- text-center: Căn giữa text -->
-                        <!-- font-weight-medium: Font weight vừa -->
-                        <!-- py-2: Padding-top & bottom = 2 -->
-                        <!-- width: 170px: Chiều rộng cố định -->
-                        <div class="bg-primary text-dark text-center font-weight-medium py-2" style="width: 170px;">Breaking News</div>
-
-                        <!-- NEWS TICKER: Carousel của các tin tức mới (scrolling) -->
-                        <!-- owl-carousel: Khởi tạo Owl Carousel -->
-                        <!-- tranding-carousel: Custom class để config kiểu carousel -->
-                        <!-- position-relative: Cho phép positioning absolute của con -->
-                        <!-- d-inline-flex: Display inline-flex (nằm cùng hàng với label) -->
-                        <!-- align-items-center: Căn giữa items theo chiều dọc -->
-                        <!-- ml-3: Margin-left = 3 (khoảng cách từ label) -->
-                        <!-- width: calc(100% - 170px): Chiều rộng = toàn bộ - width của label -->
-                        <!-- padding-right: 90px: Khoảng cách cho navigation arrows -->
-                        <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center ml-3"
-                            style="width: calc(100% - 170px); padding-right: 90px;">
-                            <!-- BREAKING NEWS ITEM 1 -->
-                            <!-- text-truncate: CSS để cắt text dài thành một dòng (...) -->
-                            <!-- text-white: Chữ màu trắng -->
-                            <!-- text-uppercase: Chữ hoa toàn bộ -->
-                            <!-- font-weight-semi-bold: Font weight bán-đậm -->
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
-                            <!-- BREAKING NEWS ITEM 2 -->
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
+                    <div class="d-flex align-items-center">
+                        <div class="bg-primary px-3" style="height: 45px;">
+                            <h6 class="text-white font-weight-semi-bold m-0 py-2">Breaking News</h6>
+                        </div>
+                        <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center ml-3" style="width: calc(100% - 170px); padding-right: 90px;">
+                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit</a></div>
+                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit</a></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Breaking News End -->
 
-
-    <!-- ============================================================ -->
-    <!-- PHẦN 5: FEATURED NEWS SLIDER - Carousel 5 bài nổi bật -->
-    <!-- ============================================================ -->
-    <!-- pt-5: Padding-top = 5 (khoảng cách từ trên) -->
-    <!-- mb-3: Margin-bottom = 3 (khoảng cách từ dưới) -->
+    <!-- FEATURED NEWS SLIDER -->
     <div class="container-fluid pt-5 mb-3">
         <div class="container">
-            <!-- TIÊU ĐỀ SECTION: "Featured News" -->
-            <!-- section-title: Custom class để styling tiêu đề section -->
             <div class="section-title">
-                <!-- m-0: Margin 0 -->
-                <!-- text-uppercase: Chữ hoa -->
-                <!-- font-weight-bold: Font weight đậm -->
                 <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
             </div>
-
-            <!-- OWL CAROUSEL: Slider cho featured news -->
-            <!-- news-carousel: Custom class -->
-            <!-- carousel-item-4: Config để hiển thị 4 items trên desktop -->
-            <!-- position-relative: Cho phép positioning của controls -->
             <div class="owl-carousel news-carousel carousel-item-4 position-relative">
-                <!-- FEATURED NEWS ITEM 1-5: Mỗi item là bài viết -->
-                <!-- position-relative: Cho phép positioning overlay -->
-                <!-- overflow-hidden: Ẩn nội dung vượt ra ngoài -->
-                <!-- height: 300px: Chiều cao cố định -->
                 <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <!-- Hình ảnh background -->
-                    <!-- img-fluid: Ảnh responsive -->
-                    <!-- h-100: Height 100% -->
-                    <!-- object-fit: cover: Cover toàn bộ area -->
                     <img class="img-fluid h-100" src="/img/news-700x435-1.jpg" style="object-fit: cover;">
-                    <!-- Overlay text trên hình -->
                     <div class="overlay">
                         <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                             <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor</a>
                     </div>
                 </div>
                 <div class="position-relative overflow-hidden" style="height: 300px;">
                     <img class="img-fluid h-100" src="/img/news-700x435-2.jpg" style="object-fit: cover;">
                     <div class="overlay">
                         <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                             <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor</a>
                     </div>
                 </div>
                 <div class="position-relative overflow-hidden" style="height: 300px;">
                     <img class="img-fluid h-100" src="/img/news-700x435-3.jpg" style="object-fit: cover;">
                     <div class="overlay">
                         <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                             <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor</a>
                     </div>
                 </div>
                 <div class="position-relative overflow-hidden" style="height: 300px;">
                     <img class="img-fluid h-100" src="/img/news-700x435-4.jpg" style="object-fit: cover;">
                     <div class="overlay">
                         <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                             <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor</a>
                     </div>
                 </div>
                 <div class="position-relative overflow-hidden" style="height: 300px;">
                     <img class="img-fluid h-100" src="/img/news-700x435-5.jpg" style="object-fit: cover;">
                     <div class="overlay">
                         <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                             <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Featured News Slider End -->
 
-
-    <!-- ============================================================ -->
-    <!-- PHẦN 6: NEWS WITH SIDEBAR - Bài viết chính + Sidebar phụ -->
-    <!-- ============================================================ -->
-    <!-- Layout 2 cột: Left (8/12) = Bài viết chính, Right (4/12) = Sidebar -->
-    <!-- ============================================================ -->
+    <!-- NEWS WITH SIDEBAR -->
     <div class="container-fluid">
         <div class="container">
-            <!-- row: Grid 12 cột -->
             <div class="row">
-                <!-- CỘT TRÁI: Bài viết chính (8 cột = 8/12 = 67%) -->
-                <!-- col-lg-8: 8/12 chiều rộng trên desktop -->
                 <div class="col-lg-8">
-                    <!-- GRID CỘT TRÁI: Row trong row để chia nhỏ thành các article items -->
-                    <div class="row">
-                        <!-- ARTICLE ITEM 1 -->
-                        <div class="col-12">
-                            <div class="section-title">
-                                <h4 class="m-0 text-uppercase font-weight-bold">Latest News</h4>
-                                <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
-                            </div>
+                    <div class="row news-lg mx-0 mb-3">
+                        <div class="col-md-6 h-100 px-0">
+                            <img class="img-fluid h-100" src="/img/news-700x435-1.jpg" style="object-fit: cover;">
                         </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="/img/news-700x435-1.jpg" style="object-fit: cover;">
-                                <div class="bg-white border border-top-0 p-4">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                    <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                        rebum clita rebum dolor stet amet justo</p>
+                        <div class="col-md-6 d-flex flex-column border bg-white h-100 px-0">
+                            <div class="mt-auto p-4">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
+                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                 </div>
-                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle mr-2" src="/img/user.jpg" width="25" height="25" alt="">
-                                        <small>John Doe</small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
-                                    </div>
+                                <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor</a>
+                                <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna rebum clita rebum</p>
+                            </div>
+                            <div class="d-flex justify-content-between bg-white border-top mt-auto p-4">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle mr-2" src="/img/user.jpg" width="25" height="25" alt="">
+                                    <small>John Doe</small>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
+                                    <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                    </div>
+                    <div class="row news-md mx-0 mb-3">
+                        <div class="col-md-6">
                             <div class="position-relative mb-3">
                                 <img class="img-fluid w-100" src="/img/news-700x435-2.jpg" style="object-fit: cover;">
                                 <div class="bg-white border border-top-0 p-4">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
-                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                    <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                        rebum clita rebum dolor stet amet justo</p>
+                                    <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum</a>
                                 </div>
-                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle mr-2" src="/img/user.jpg" width="25" height="25" alt="">
-                                        <small>John Doe</small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
-                                    </div>
+                            </div>
+                            <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle mr-2" src="/img/user.jpg" width="25" height="25" alt="">
+                                    <small>John Doe</small>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
+                                    <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 mb-3">
-                            <a href=""><img class="img-fluid w-100" src="/img/ads-728x90.png" alt=""></a>
-                        </div>
-                        <div class="col-lg-6">
+                        <div class="col-md-6">
                             <div class="position-relative mb-3">
                                 <img class="img-fluid w-100" src="/img/news-700x435-3.jpg" style="object-fit: cover;">
                                 <div class="bg-white border border-top-0 p-4">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
-                                    <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                    <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum</a>
                                 </div>
-                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle mr-2" src="/img/user.jpg" width="25" height="25" alt="">
-                                        <small>John Doe</small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="/img/news-700x435-4.jpg" style="object-fit: cover;">
-                                <div class="bg-white border border-top-0 p-4">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
                             </div>
                             <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
                                 <div class="d-flex align-items-center">
@@ -431,345 +255,104 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            <img class="img-fluid" src="/img/news-110x110-1.jpg" alt="">
-                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
                         </div>
-                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            <img class="img-fluid" src="/img/news-110x110-2.jpg" alt="">
-                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            <img class="img-fluid" src="/img/news-110x110-3.jpg" alt="">
-                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            <img class="img-fluid" src="/img/news-110x110-4.jpg" alt="">
-                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
+                        <div class="bg-white border border-top-0 p-3">
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
+                                <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Fans</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
+                                <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Followers</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
+                                <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Connects</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
+                                <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Followers</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
+                                <i class="fab fa-youtube text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Subscribers</span>
+                            </a>
+                            <a href="" class="d-block w-100 text-white text-decoration-none" style="background: #055570;">
+                                <i class="fab fa-vimeo-v text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">12,345 Followers</span>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-lg-12 mb-3">
-                        <a href=""><img class="img-fluid w-100" src="/img/ads-728x90.png" alt=""></a>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="row news-lg mx-0 mb-3">
-                            <div class="col-md-6 h-100 px-0">
-                                <img class="img-fluid h-100" src="/img/news-700x435-5.jpg" style="object-fit: cover;">
-                            </div>
-                            <div class="col-md-6 d-flex flex-column border bg-white h-100 px-0">
-                                <div class="mt-auto p-4">
+
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Popular News</h4>
+                        </div>
+                        <div class="bg-white border border-top-0 p-3">
+                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                <img class="img-fluid" src="/img/news-110x110-1.jpg" alt="">
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
-                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                    <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                        rebum clita rebum dolor stet amet justo</p>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum</a>
                                 </div>
-                                <div class="d-flex justify-content-between bg-white border-top mt-auto p-4">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle mr-2" src="/img/user.jpg" width="25" height="25" alt="">
-                                        <small>John Doe</small>
+                            </div>
+                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                <img class="img-fluid" src="/img/news-110x110-2.jpg" alt="">
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
-                                    <div class="d-flex align-items-center">
-                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum</a>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                <img class="img-fluid" src="/img/news-110x110-3.jpg" alt="">
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum</a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            <img class="img-fluid" src="/img/news-110x110-1.jpg" alt="">
-                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                            <div class="d-flex align-items-center bg-white" style="height: 110px;">
+                                <img class="img-fluid" src="/img/news-110x110-4.jpg" alt="">
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                                    </div>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum</a>
                                 </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            <img class="img-fluid" src="/img/news-110x110-2.jpg" alt="">
-                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            <img class="img-fluid" src="/img/news-110x110-3.jpg" alt="">
-                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            <img class="img-fluid" src="/img/news-110x110-4.jpg" alt="">
-                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col-lg-4">
-                <!-- Social Follow Start -->
-                <div class="mb-3">
-                    <div class="section-title mb-0">
-                        <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
-                    </div>
-                    <div class="bg-white border border-top-0 p-3">
-                        <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
-                            <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                            <span class="font-weight-medium">12,345 Fans</span>
-                        </a>
-                        <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
-                            <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                            <span class="font-weight-medium">12,345 Followers</span>
-                        </a>
-                        <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
-                            <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                            <span class="font-weight-medium">12,345 Connects</span>
-                        </a>
-                        <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
-                            <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                            <span class="font-weight-medium">12,345 Followers</span>
-                        </a>
-                        <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
-                            <i class="fab fa-youtube text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                            <span class="font-weight-medium">12,345 Subscribers</span>
-                        </a>
-                        <a href="" class="d-block w-100 text-white text-decoration-none" style="background: #055570;">
-                            <i class="fab fa-vimeo-v text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                            <span class="font-weight-medium">12,345 Followers</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- Social Follow End -->
-
-                <!-- Ads Start -->
-                <div class="mb-3">
-                    <div class="section-title mb-0">
-                        <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
-                    </div>
-                    <div class="bg-white text-center border border-top-0 p-3">
-                        <a href=""><img class="img-fluid" src="/img/news-800x500-2.jpg" alt=""></a>
-                    </div>
-                </div>
-                <!-- Ads End -->
-
-                <!-- Popular News Start -->
-                <div class="mb-3">
-                    <div class="section-title mb-0">
-                        <h4 class="m-0 text-uppercase font-weight-bold">Tranding News</h4>
-                    </div>
-                    <div class="bg-white border border-top-0 p-3">
-                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            <img class="img-fluid" src="/img/news-110x110-1.jpg" alt="">
-                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            <img class="img-fluid" src="/img/news-110x110-2.jpg" alt="">
-                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            <img class="img-fluid" src="/img/news-110x110-3.jpg" alt="">
-                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            <img class="img-fluid" src="/img/news-110x110-4.jpg" alt="">
-                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            <img class="img-fluid" src="/img/news-110x110-5.jpg" alt="">
-                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Popular News End -->
-
-                <!-- Newsletter Start -->
-                <div class="mb-3">
-                    <div class="section-title mb-0">
-                        <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
-                    </div>
-                    <div class="bg-white text-center border border-top-0 p-3">
-                        <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
-                        <div class="input-group mb-2" style="width: 100%;">
-                            <input type="text" class="form-control form-control-lg" placeholder="Your Email">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
-                            </div>
-                        </div>
-                        <small>Lorem ipsum dolor sit amet elit</small>
-                    </div>
-                </div>
-                <!-- Newsletter End -->
-
-                <!-- Tags Start -->
-                <div class="mb-3">
-                    <div class="section-title mb-0">
-                        <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
-                    </div>
-                    <div class="bg-white border border-top-0 p-3">
-                        <div class="d-flex flex-wrap m-n1">
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Health</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Education</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Science</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Tags End -->
             </div>
         </div>
     </div>
-    <!-- News With Sidebar End -->
 
-    <!-- ============================================================ -->
-    <!-- PHẦN 7: BACK TO TOP BUTTON - Nút lên đầu trang -->
-    <!-- ============================================================ -->
-    <!-- btn btn-primary: Button với màu primary (xanh) từ Bootstrap -->
-    <!-- btn-square: Custom class để tạo button hình vuông -->
-    <!-- back-to-top: Custom class để styling và JS functionality -->
-    <!-- position: fixed, bottom right: Button sẽ xuất hiện ở góc dưới bên phải -->
+    <!-- BACK TO TOP BUTTON -->
     <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
 
-    <!-- ============================================================ -->
-    <!-- PHẦN 8: JAVASCRIPT LIBRARIES - Nhập các thư viện JavaScript -->
-    <!-- ============================================================ -->
-    <!-- Thứ tự tải script rất quan trọng:
-         1. jQuery (dependency cho Bootstrap, Owl Carousel)
-         2. Bootstrap Bundle (UI components)
-         3. Easing (animation smoothing)
-         4. Owl Carousel (slider functionality)
-         5. main.js (initialization code của ứng dụng)
-    -->
-
-    <!-- jQuery 3.4.1 từ CDN -->
-    <!-- jQuery là JavaScript library giúp DOM manipulation, AJAX, events -->
-    <!-- CDN: https://code.jquery.com (Content Delivery Network) -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-    <!-- Bootstrap Bundle 4.4.1 từ CDN -->
-    <!-- Bao gồm Bootstrap JavaScript + Popper.js (dependency cho dropdowns, tooltips) -->
-    <!-- Cung cấp components: Navbar, Modal, Dropdown, Carousel, Toast, v.v. -->
-    <!-- Ngôn ngữ: 'bundle' nghĩa là bao gồm Popper.js bên trong -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Easing Animation Library (local file) -->
-    <!-- Thư viện cung cấp các hàm easing cho smooth animations -->
-    <!-- Ví dụ: easeInOutQuad, easeInOutCubic, v.v. -->
-    <!-- Được sử dụng cho smooth scrolling effects -->
-    <!-- Đường dẫn: /lib/easing/easing.min.js (phục vụ từ public/) -->
-    <script src="/lib/easing/easing.min.js"></script>
-
-    <!-- Owl Carousel 2.2.1 (local file) -->
-    <!-- Plugin jQuery tạo responsive carousel/slider -->
-    <!-- Được sử dụng cho:
-         - Main News Slider
-         - Breaking News Ticker
-         - Featured News Carousel
-    -->
-    <!-- Đường dẫn: /lib/owlcarousel/owl.carousel.min.js (phục vụ từ public/) -->
-    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Main JavaScript (local file) -->
-    <!-- File này chứa tất cả custom JavaScript code cho ứng dụng:
-         - Khởi tạo Owl Carousel với config
-         - Back-to-top button functionality
-         - Dropdown menu handlers
-         - Smooth scrolling
-         - Custom animations
-    -->
-    <!-- Đường dẫn: /js/main.js (phục vụ từ public/) -->
-    <script src="/js/main.js"></script>
-
-    <!-- ============================================================ -->
-    <!-- PHẦN 9: FOOTER - Nhúng partial footer -->
-    <!-- ============================================================ -->
-    <!-- <%- include(...) %>: EJS command để nhúng file partial -->
-    <!-- '../partials/footer': Đường dẫn tương đối từ views/ tới partials/footer.ejs -->
-    <!-- { siteInfo: siteInfo }: Truyền siteInfo object từ route vào footer partial -->
-    <!-- Footer chứa: Contact info, Social links, Popular news, Categories, Newsletter -->
+    <!-- FOOTER -->
     <%- include('../partials/footer', { siteInfo: siteInfo }) %>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>

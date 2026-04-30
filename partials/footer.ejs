@@ -1,198 +1,102 @@
-<!-- ============================================================ -->
-<!-- FILE: partials/footer.ejs -->
-<!-- MỤC ĐÍCH: Định nghĩa Footer của tất cả các trang -->
-<!-- MÔ TẢ: File này chứa thông tin liên hệ, social links, -->
-<!-- tin tức phổ biến, danh mục, và form đăng ký newsletter -->
-<!-- Được nhúng vào cuối tất cả các trang -->
-<!-- ============================================================ -->
-
-<!-- Footer Start -->
-<!-- bg-dark: Nền màu tối -->
-<!-- pt-5: Padding-top (5 units) -->
-<!-- px-sm-3 px-md-5: Padding-right/left responsive (3 trên sm, 5 trên md+) -->
-<!-- mt-5: Margin-top (khoảng cách từ nội dung chính) -->
-<!-- ============================================================ -->
-<div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
-    <!-- FOOTER CONTENT: 4 cột (thông tin, tin tức, danh mục, flickr) -->
-    <!-- row py-4: Hàng grid với padding-top và bottom = 4 -->
-    <div class="row py-4">
-        <!-- CỘT 1: Get In Touch (Thông tin liên hệ) -->
-        <!-- col-lg-3: 3/12 chiều rộng trên desktop (25%) -->
-        <!-- col-md-6: 6/12 chiều rộng trên tablet (50%) -->
-        <!-- mb-5: Margin-bottom = 5 (khoảng cách từ dưới) -->
-        <!-- ============================================================ -->
+<!-- FOOTER -->
+<div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5">
+    <div class="row">
+        <!-- COLUMN 1: GET IN TOUCH -->
         <div class="col-lg-3 col-md-6 mb-5">
-            <!-- TIÊU ĐỀ CỘT 1 -->
-            <!-- text-white: Chữ màu trắng (đổi khi nền tối) -->
-            <!-- text-uppercase: Chữ hoa toàn bộ -->
-            <!-- font-weight-bold: Font weight đậm -->
-            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Get In Touch</h5>
-
-            <!-- ĐỊA CHỈ: Sử dụng EJS variable <%= siteInfo.address %> -->
-            <!-- siteInfo là object được truyền từ app.js thông qua EJS include -->
-            <!-- fa-map-marker-alt: Icon địa chỉ từ Font Awesome -->
-            <!-- font-weight-medium: Font weight vừa (không đậm, không nhẹ) -->
-            <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i><%= siteInfo.address %></p>
-
-            <!-- EMAIL: Sử dụng EJS variable <%= siteInfo.email %> -->
-            <!-- fa-envelope: Icon email từ Font Awesome -->
-            <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i><%= siteInfo.email %></p>
-
-            <!-- FOLLOW US: Tiêu đề cho social media section -->
-            <!-- mt-4: Margin-top (khoảng cách từ trên) -->
-            <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
-
-            <!-- SOCIAL ICONS ROW -->
-            <!-- d-flex: Sắp xếp theo hàng ngang (flexbox) -->
-            <!-- justify-content-start: Căn lề trái -->
-            <div class="d-flex justify-content-start">
-                <!-- ICON BUTTONS: Twitter, Facebook, LinkedIn, Instagram, YouTube -->
-                <!-- btn btn-lg btn-secondary: Styling button từ Bootstrap -->
-                <!-- btn-lg-square: Custom class để làm button hình vuông -->
-                <!-- mr-2: Margin-right = 2 (khoảng cách giữa các button) -->
-                <!-- target="_blank": Mở link trong tab mới -->
-                <!-- fab fa-*: Icon từ Font Awesome 5 -->
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="<%= siteInfo.facebook %>" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
-                <a class="btn btn-lg btn-secondary btn-lg-square" href="<%= siteInfo.youtube %>" target="_blank"><i class="fab fa-youtube"></i></a>
+            <h5 class="text-white font-weight-bold mb-4">Get In Touch</h5>
+            <p>
+                <i class="fa fa-map-marker-alt mr-2"></i><%= siteInfo.address %>
+            </p>
+            <p>
+                <i class="fa fa-phone-alt mr-2"></i>+1-888-901-8129
+            </p>
+            <p>
+                <i class="fa fa-envelope mr-2"></i><%= siteInfo.email %>
+            </p>
+            <div class="d-flex pt-2">
+                <a class="btn btn-outline-light btn-social rounded-circle mr-2" href="<%= siteInfo.facebook %>" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-outline-light btn-social rounded-circle mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-light btn-social rounded-circle mr-2" href="#"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-outline-light btn-social rounded-circle" href="<%= siteInfo.youtube %>" target="_blank"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
 
-        <!-- CỘT 2: Popular News (Tin tức phổ biến) -->
-        <!-- col-lg-3 col-md-6: 3 cột trên desktop, 6 cột trên tablet -->
-        <!-- ============================================================ -->
+        <!-- COLUMN 2: POPULAR NEWS -->
         <div class="col-lg-3 col-md-6 mb-5">
-            <!-- TIÊU ĐỀ CỘT 2 -->
-            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular News</h5>
-
-            <!-- ITEM 1: Tin tức phổ biến thứ nhất -->
-            <!-- mb-3: Margin-bottom = 3 (khoảng cách giữa các item) -->
-            <!-- ============================================================ -->
-            <div class="mb-3">
-                <!-- CATEGORY BADGE + DATE -->
-                <!-- mb-2: Margin-bottom = 2 -->
-                <!-- badge badge-primary: Bootstrap badge style -->
-                <!-- text-uppercase font-weight-semi-bold: Chữ hoa, font weight bán-đậm -->
-                <!-- p-1: Padding = 1 (khoảng trắng bên trong badge) -->
-                <div class="mb-2">
-                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+            <h5 class="text-white font-weight-bold mb-4">Popular News</h5>
+            <div class="d-flex align-items-center mb-3" style="height: 80px;">
+                <img class="img-fluid" src="/img/news-110x110-1.jpg" alt="">
+                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0 border-dark">
+                    <small class="text-body">Jan 01, 2045</small>
+                    <h6 class="text-white text-uppercase mb-0">Lorem ipsum dolor</h6>
                 </div>
-                <!-- TIÊU ĐỀ BÀI VIẾT -->
-                <!-- small: Font size nhỏ -->
-                <!-- text-body: Màu chữ mặc định -->
-                <!-- text-uppercase: Chữ hoa -->
-                <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
             </div>
-
-            <!-- ITEM 2: Tin tức phổ biến thứ hai -->
-            <div class="mb-3">
-                <div class="mb-2">
-                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+            <div class="d-flex align-items-center mb-3" style="height: 80px;">
+                <img class="img-fluid" src="/img/news-110x110-2.jpg" alt="">
+                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0 border-dark">
+                    <small class="text-body">Jan 01, 2045</small>
+                    <h6 class="text-white text-uppercase mb-0">Lorem ipsum dolor</h6>
                 </div>
-                <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
             </div>
-
-            <!-- ITEM 3: Tin tức phổ biến thứ ba -->
-            <div class="">
-                <div class="mb-2">
-                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+            <div class="d-flex align-items-center" style="height: 80px;">
+                <img class="img-fluid" src="/img/news-110x110-3.jpg" alt="">
+                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0 border-dark">
+                    <small class="text-body">Jan 01, 2045</small>
+                    <h6 class="text-white text-uppercase mb-0">Lorem ipsum dolor</h6>
                 </div>
-                <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
             </div>
         </div>
 
-        <!-- CỘT 3: Categories (Danh mục bài viết) -->
-        <!-- col-lg-3 col-md-6: 3 cột trên desktop, 6 cột trên tablet -->
-        <!-- ============================================================ -->
+        <!-- COLUMN 3: CATEGORIES -->
         <div class="col-lg-3 col-md-6 mb-5">
-            <!-- TIÊU ĐỀ CỘT 3 -->
-            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
-
-            <!-- CATEGORY BUTTONS -->
-            <!-- m-n1: Margin negative = 1 (để tạo spacing khi buttons wrap) -->
-            <!-- btn btn-sm btn-secondary: Button nhỏ, màu secondary -->
-            <!-- m-1: Margin = 1 (khoảng cách xung quanh button) -->
-            <div class="m-n1">
-                <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Entertainment</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Travel</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Lifestyle</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
+            <h5 class="text-white font-weight-bold mb-4">Categories</h5>
+            <div class="m-0">
+                <a href="/category" class="btn btn-dark btn-sm mb-2">Business</a>
+                <a href="/category" class="btn btn-dark btn-sm mb-2">Sports</a>
+                <a href="/category" class="btn btn-dark btn-sm mb-2">Politics</a>
+                <a href="/category" class="btn btn-dark btn-sm mb-2">Health</a>
+                <a href="/category" class="btn btn-dark btn-sm mb-2">Technology</a>
+                <a href="/category" class="btn btn-dark btn-sm mb-2">Science</a>
             </div>
         </div>
 
-        <!-- CỘT 4: Flickr Photos (Hình ảnh từ Flickr) -->
-        <!-- col-lg-3 col-md-6: 3 cột trên desktop, 6 cột trên tablet -->
-        <!-- ============================================================ -->
+        <!-- COLUMN 4: NEWSLETTER -->
         <div class="col-lg-3 col-md-6 mb-5">
-            <!-- TIÊU ĐỀ CỘT 4 -->
-            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Flickr Photos</h5>
-
-            <!-- GRID HÌNH ẢNH 3x2 (3 cột, 2 hàng) -->
-            <!-- row: Tạo hàng grid -->
-            <div class="row">
-                <!-- HÀNG 1: 3 hình ảnh -->
-                <!-- col-4: 4/12 chiều rộng (1/3 màn hình) = 3 hình trên 1 hàng -->
-                <!-- mb-3: Margin-bottom = 3 (khoảng cách giữa các hàng) -->
-                <!-- w-100: Width 100% (ảnh chiếm toàn bộ chiều rộng col) -->
-                <div class="col-4 mb-3">
-                    <a href=""><img class="w-100" src="/img/news-110x110-1.jpg" alt=""></a>
+            <h5 class="text-white font-weight-bold mb-4">Newsletter</h5>
+            <p>Subscribe to our newsletter for the latest news and updates</p>
+            <div class="w-100 mb-3">
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-lg" placeholder="Your Email Address" style="padding: 10px 20px;">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
+                    </div>
                 </div>
-                <div class="col-4 mb-3">
-                    <a href=""><img class="w-100" src="/img/news-110x110-2.jpg" alt=""></a>
-                </div>
-                <div class="col-4 mb-3">
-                    <a href=""><img class="w-100" src="/img/news-110x110-3.jpg" alt=""></a>
-                </div>
-
-                <!-- HÀNG 2: 3 hình ảnh tiếp theo -->
-                <div class="col-4 mb-3">
-                    <a href=""><img class="w-100" src="/img/news-110x110-4.jpg" alt=""></a>
-                </div>
-                <div class="col-4 mb-3">
-                    <a href=""><img class="w-100" src="/img/news-110x110-5.jpg" alt=""></a>
-                </div>
-                <div class="col-4 mb-3">
-                    <a href=""><img class="w-100" src="/img/news-110x110-1.jpg" alt=""></a>
-                </div>
+            </div>
+            <h6 class="text-white font-weight-bold">Follow Us</h6>
+            <div class="d-flex pt-2">
+                <a class="btn btn-outline-light btn-social rounded-circle mr-2" href="<%= siteInfo.facebook %>" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-outline-light btn-social rounded-circle mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-light btn-social rounded-circle mr-2" href="#"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-outline-light btn-social rounded-circle" href="<%= siteInfo.youtube %>" target="_blank"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </div>
 </div>
 
-<!-- FOOTER COPYRIGHT SECTION -->
-<!-- container-fluid: Chiếm toàn bộ chiều rộng -->
-<!-- py-4: Padding-top và bottom = 4 -->
-<!-- px-sm-3 px-md-5: Padding-left/right responsive -->
-<!-- style="background: #111111;": Nền tối hơn footer trên (nền mạnh hơn) -->
-<!-- ============================================================ -->
-<div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
-    <!-- COPYRIGHT TEXT: Thông báo bản quyền -->
-    <!-- m-0: Margin 0 (loại bỏ margin mặc định) -->
-    <!-- text-center: Căn giữa text -->
-    <!-- <%= siteInfo.copyright %>: EJS variable cho text bản quyền từ app.js -->
-    <p class="m-0 text-center">&copy; <a href="#"><%= siteInfo.copyright %></a>. All Rights Reserved. 
-    Design by <a href="https://htmlcodex.com">HTML Codex</a></p>
+<!-- FOOTER BOTTOM -->
+<div class="container-fluid bg-dark border-top border-secondary px-sm-3 px-md-5" style="border-color: #3c3c3c !important;">
+    <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+            <p class="m-0 text-body">&copy; <%= siteInfo.copyright %></p>
+        </div>
+        <div class="col-md-6 text-center text-md-right">
+            <p class="m-0 text-body">
+                Designed by <a href="#">Nhom 5</a>
+            </p>
+        </div>
+    </div>
 </div>
-<!-- Footer End -->

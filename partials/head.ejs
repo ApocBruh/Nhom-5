@@ -1,72 +1,24 @@
-<!-- ============================================================ -->
-<!-- FILE: partials/head.ejs -->
-<!-- MỤC ĐÍCH: Định nghĩa phần <head> của tất cả các trang HTML -->
-<!-- MÔ TẢ: File này chứa tất cả metadata, stylesheets và external -->
-<!-- resources cần thiết cho website. Nó được nhúng vào tất cả các -->
-<!-- trang thông qua EJS include command -->
-<!-- ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title><%= title %> - News Feed</title>
+<meta name="keywords" content="news, articles, categories, blog">
+<meta name="description" content="Newsfeed - Latest news and articles">
 
-<!-- PHẦN 1: METADATA CƠ BẢN -->
-<!-- Charset UTF-8 giúp hỗ trợ tất cả các ký tự Unicode, bao gồm -->
-<!-- các ký tự Việt. Điều này rất quan trọng để hiển thị đúng ngôn ngữ -->
-<meta charset="utf-8">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- PHẦN 2: TIÊU ĐỀ TRANG ĐỘNG -->
-<!-- Sử dụng EJS templating syntax <%= title %> để nhận giá trị title -->
-<!-- từ server (app.js). Mỗi trang có thể có tiêu đề khác nhau -->
-<!-- Ví dụ: title = 'Trang chủ - Newsfeed' hoặc 'Liên hệ - Newsfeed' -->
-<title><%= title %></title>
+<!-- Font Awesome 5 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
 
-<!-- PHẦN 3: VIEWPORT - Đáp ứng cho các thiết bị di động -->
-<!-- width=device-width: Đặt chiều rộng viewport bằng chiều rộng thiết bị -->
-<!-- initial-scale=1.0: Xác định mức zoom ban đầu là 100% -->
-<!-- Không có những cài đặt này, website sẽ bị scale sai trên mobile -->
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="/lib/owlcarousel/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="/lib/owlcarousel/assets/owl.theme.default.min.css">
 
-<!-- PHẦN 4: SEO - Keywords và Description -->
-<!-- Các thẻ này giúp search engines (Google, Bing, v.v.) hiểu nội dung -->
-<!-- của trang để xếp hạng tốt hơn trong kết quả tìm kiếm -->
-<meta content="Free HTML Templates" name="keywords">
-<meta content="Free HTML Templates" name="description">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
 
-<!-- ============================================================ -->
-<!-- PHẦN 5: FAVICON - Biểu tượng trên tab trình duyệt -->
-<!-- favicon.ico là file hình ảnh nhỏ (thường 16x16px hoặc 32x32px) -->
-<!-- Đường dẫn /img/favicon.ico trỏ vào thư mục public/img -->
-<!-- ============================================================ -->
-<link href="/img/favicon.ico" rel="icon">
-
-<!-- ============================================================ -->
-<!-- PHẦN 6: GOOGLE WEB FONTS - Font chữ Montserrat -->
-<!-- Sử dụng các trọng lượng: 400 (Normal), 500 (Medium), 600 (Semibold), 700 (Bold) -->
-<!-- display=swap giúp font hiển thị ngay cả khi file còn đang tải -->
-<!-- Nếu không có display=swap, text sẽ bị ẩn cho đến khi font tải xong -->
-<!-- Kiến thức: Preconnect giúp trình duyệt kết nối sớm đến Google Fonts server -->
-<!-- ============================================================ -->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
-
-<!-- ============================================================ -->
-<!-- PHẦN 7: FONT AWESOME - Thư viện biểu tượng (Icons) -->
-<!-- Font Awesome cung cấp hơn 6000+ icons (fa-facebook, fa-twitter, v.v.) -->
-<!-- Được sử dụng trong header (social icons), footer, và các nơi khác -->
-<!-- Version 5.15.0 được sử dụng từ CDN (Content Delivery Network) -->
-<!-- ============================================================ -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
-
-<!-- ============================================================ -->
-<!-- PHẦN 8: OWL CAROUSEL - Thư viện tạo slider/carousel -->
-<!-- Owl Carousel là một plugin jQuery giúp tạo các slider hình ảnh -->
-<!-- được sử dụng cho "Main News Slider", "Featured News Slider", v.v. -->
-<!-- File CSS này định nghĩa các style cơ bản cho carousel -->
-<!-- ============================================================ -->
-<link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-<!-- ============================================================ -->
-<!-- PHẦN 9: CUSTOM BOOTSTRAP STYLESHEET -->
-<!-- File style.css chứa toàn bộ CSS tùy chỉnh của website -->
-<!-- Nó thay đổi màu sắc, layout, và styling cụ thể cho template này -->
-<!-- Thứ tự tải CSS quan trọng: Google Fonts -> Font Awesome -> -->
-<!-- Owl Carousel CSS -> Custom CSS. CSS được tải sau sẽ ghi đè CSS trước -->
-<!-- ============================================================ -->
-<link href="/css/style.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/style.css">
