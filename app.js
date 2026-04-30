@@ -1,16 +1,20 @@
-//<!-- ============================================================ -->
-//<!-- FILE: app.js -->
-//<!-- MỤC ĐÍCH: File chính của ứng dụng Node.js/Express -->
-//<!-- MÔ TẢ: File này chứa: -->
-//<!-- 1. Cấu hình Express server -->
-//<!-- 2. Thiết lập EJS templating engine -->
-//<!-- 3. Cấu hình serving static files (CSS, JS, images) -->
-//<!-- 4. Định nghĩa routes của ứng dụng -->
-//<!-- 5. Start server trên port được chỉ định -->
-//<!-- ============================================================ -->
+/**
+ * ============================================================
+ * FILE: app.js
+ * MỤC ĐÍCH: File chính của ứng dụng Node.js/Express
+ * MÔ TẢ: File này chứa:
+ * 1. Cấu hình Express server
+ * 2. Thiết lập EJS templating engine
+ * 3. Cấu hình serving static files (CSS, JS, images)
+ * 4. Import kết nối database
+ * 5. Định nghĩa routes của ứng dụng
+ * 6. Start server trên port được chỉ định
+ * ============================================================
+ */
 
 // PHẦN 1: IMPORT DEPENDENCIES (Nhập các thư viện cần thiết)
 // ============================================================
+
 // express: Framework web Node.js cho routing, middleware, HTTP utilities
 const express = require('express');
 
@@ -22,8 +26,19 @@ const path = require('path');
 // Giúp bảo mật thông tin nhạy cảm (API keys, passwords, v.v.)
 require('dotenv').config();
 
-// PHẦN 2: KHỞI TẠO ỨNG DỤNG EXPRESS
 // ============================================================
+// PHẦN 2: IMPORT DATABASE CONNECTION
+// ============================================================
+
+// pool: Connection pool từ config/database.js
+// Pool này sẽ được sử dụng ở các routes để query database
+// Lợi ích: Tái sử dụng connections, quản lý tập trung, performance tốt
+// Ghi chú: File này sẽ tự động test kết nối khi app.js được load
+const pool = require('./config/database');
+
+// PHẦN 3: KHỞI TẠO ỨNG DỤNG EXPRESS
+// ============================================================
+
 // Tạo instance Express app - đây là object chính để cấu hình server
 const app = express();
 
@@ -32,8 +47,9 @@ const app = express();
 // Nếu không có, port mặc định = 3000
 const port = process.env.PORT || 3000;
 
-// PHẦN 3: CẤU HÌNH EJS TEMPLATING ENGINE
+// PHẦN 4: CẤU HÌNH EJS TEMPLATING ENGINE
 // ============================================================
+
 // app.set('view engine', 'ejs')
 // Báo cho Express rằng chúng ta sử dụng EJS làm template engine
 // EJS cho phép nhúng JavaScript vào HTML (ví dụ: <%= variable %>)
@@ -46,8 +62,9 @@ app.set('view engine', 'ejs');
 // Ví dụ: C:\nhom-5\views hoặc /home/user/nhom-5/views
 app.set('views', path.join(__dirname, 'views'));
 
-// PHẦN 4: CẤU HÌNH STATIC FILE SERVING
+// PHẦN 5: CẤU HÌNH STATIC FILE SERVING
 // ============================================================
+
 // app.use(express.static(...))
 // Middleware để phục vụ các file tĩnh (CSS, JS, images, v.v.)
 // Mọi file trong thư mục public sẽ được phục vụ trực tiếp từ URL root
@@ -58,8 +75,9 @@ app.set('views', path.join(__dirname, 'views'));
 // Kiến thức: File tĩnh không cần route middleware, được phục vụ tự động
 app.use(express.static(path.join(__dirname, 'public')));
 
-// PHẦN 5: ĐỊNH NGHĨA ROUTES
+// PHẦN 6: ĐỊNH NGHĨA ROUTES
 // ============================================================
+
 // Route cho trang chủ (GET /)
 // Khi client truy cập http://localhost:3000/ hoặc http://localhost:3000
 // Express sẽ chạy callback function này
@@ -102,8 +120,9 @@ app.get('/', (req, res) => {
     });
 });
 
-// PHẦN 6: START SERVER
+// PHẦN 7: START SERVER
 // ============================================================
+
 // app.listen(port, callback)
 // Khởi động Express server, lắng nghe requests trên port được chỉ định
 // Khi server khởi động thành công, chạy callback function (in thông báo)
@@ -112,5 +131,12 @@ app.get('/', (req, res) => {
 // - Server sẽ chạy cho đến khi bạn dừng nó (Ctrl+C trong terminal)
 // - Browser truy cập bằng cách gõ URL: http://localhost:3000
 app.listen(port, () => {
-    console.log(`Server đang chạy tại http://localhost:${port}`);
+    console.log('\n============================================================');
+    console.log('🚀 SERVER STARTED');
+    console.log('============================================================');
+    console.log(`Server đang chạy tại: http://localhost:${port}`);
+    console.log(`Môi trường: ${process.env.NODE_ENV || 'development'}`);
+    console.log('============================================================\n');
+    console.log('💡 Mở trình duyệt và truy cập: http://localhost:3000');
+    console.log('💡 Bấm Ctrl+C để dừng server\n');
 });
